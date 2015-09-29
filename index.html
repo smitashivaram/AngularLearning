@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html ng-app='gemStore'>
+  <head>
+    <link rel="stylesheet" type="text/css" href="bootstrap.min.css" />
+  </head>
+  <body ng-controller="StoreController as store">
+	<!-- <div ng-show="!store.product.soldOut">  -->
+	<!-- <div ng-hide="store.product.soldOut">  -->
+	<ul ng-repeat="product in store.products | orderBy:'price' "> 
+
+	<div ng-show="product.images.length && !product.soldOut">
+		<section ng-init="tab=1">		
+				<li > <h2>Product name: {{product.name|uppercase|limitTo:9}} </h2> 
+				<ul class="nav nav-pills">
+					<li ng-class="{active:tab===1}"><a href ng-click="tab=1">Description</a></li>
+					<li ng-class="{active:tab===2}"><a href ng-click="tab=2">Specifications</a></li>
+					<li ng-class="{active:tab===3}"><a href ng-click="tab=3">Reviews</a></li>
+				</ul>
+				<div class="panel" ng-show="tab===1">
+					<h3> Description </h3>
+					<blockquote> {{product.description}} </blockquote>
+					<h3> Product Price: {{product.price | currency}}</h3> 
+					<img ng-src="{{product.images[0].full}}"</li>
+					<button ng-show="product.canPurchase">Add to Cart</button> 
+				</div>
+				<div class="panel" ng-show="tab===2">
+					<h4> Specification </h4>
+					<blockquote> No specifications yet </blockquote>
+				</div>
+				<div class="panel" ng-show="tab===3">
+					<h4> Reviews</h4>
+					<blockquote> No reviews</blockquote>
+				</div>
+		</section>
+	
+	</div>
+	</ul>
+	<script type="text/javascript" src="angular.min.js"></script>
+	<script type="text/javascript" src="app.js"></script>
+	<!-- <h1>{{"hello"+" you"}}</h1> -->
+  </body>
+</html>
