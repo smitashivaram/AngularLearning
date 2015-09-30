@@ -7,11 +7,10 @@
 	<!-- <div ng-show="!store.product.soldOut">  -->
 	<!-- <div ng-hide="store.product.soldOut">  -->
 	<ul ng-repeat="product in store.products | orderBy:'price' "> 
-
-	<div ng-show="product.images.length && !product.soldOut">
+		<div ng-show="product.images.length && !product.soldOut">
 		 <section ng-controller="PanelController as panel">
-			 <!-- <section ng-init="tab=1"> -->		
-				<li > <h2>Product name: {{product.name|Uppercase|limitTo:9}} </h2> 
+		 <li > <h2>Product name: {{product.name|uppercase|limitTo:9}} </h2> </li>
+			 <!-- <section ng-init="tab=1"> 	-->
 				<ul class="nav nav-pills">
 					<li ng-class="{ active:panel.isSelected(1) }"><a href ng-click="panel.selectTab(1)">Description</a></li>
 					<li ng-class="{active:panel.isSelected(2)}"><a href ng-click="panel.selectTab(2)">Specifications</a></li>
@@ -31,7 +30,8 @@
 				<div class="panel" ng-show="panel.isSelected(3)">
 					<h4> Reviews</h4>
 					<blockquote> No reviews</blockquote>
-				</div>
+				</div> 
+		</li>
 		</section> 
 	</div> 
 	</ul>
